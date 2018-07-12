@@ -24,7 +24,7 @@ public class PersistenceRepository<T, ID extends Serializable> {
     private final String nameUP = "pu";
     private Class<T> entityClass;
 
-    private EntityManager entityManager() {
+    public EntityManager entityManager() {
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
 
