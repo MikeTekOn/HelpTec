@@ -6,9 +6,9 @@
 package com.opensoftware.helptec.domain;
 
 import com.opensoftware.helptec.valueobjects.Data;
+import com.opensoftware.helptec.valueobjects.Nome;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,15 +37,27 @@ public class Funcionario implements Serializable {
     private Especialidade especialidade;
     @Embedded
     private Data dataNascimento;
+    private String name;
     private String morada;
     private int tlf;
 
-    public Funcionario(Especialidade especialidade, Data dataNascimento, String morada, int tlf) {
+    public Funcionario(Especialidade especialidade, Data dataNascimento, String name, String morada, int tlf) {
         this.especialidade = especialidade;
         this.dataNascimento = dataNascimento;
+        this.name = name;
         this.morada = morada;
         this.tlf = tlf;
     }
+
+    public Funcionario(String name) {
+        this.name = name;
+    }
+
+    public String name() {
+        return name;
+    }
+
+    
 
     /**
      *
