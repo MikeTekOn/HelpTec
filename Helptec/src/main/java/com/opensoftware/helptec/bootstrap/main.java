@@ -48,9 +48,9 @@ public class main {
         Especialidade e1 = new Especialidade("Electronica");
         Especialidade e2 = new Especialidade("Robotica");
 
-        Funcionario f = new Funcionario(e2, new Data("08/07/1980"), "Rua Z", 921309486);
-        Funcionario f1 = new Funcionario(e, new Data("09/10/1970"), "Rua Y", 910873684);
-        Funcionario f2 = new Funcionario(e1, new Data("25/04/1985"), "Rua B", 931058394);
+        Funcionario f = new Funcionario(e2, new Data("08/07/1980"),"To ze", "Rua Z", 921309486);
+        Funcionario f1 = new Funcionario(e, new Data("09/10/1970"),"Batatas", "Rua Y", 910873684);
+        Funcionario f2 = new Funcionario(e1, new Data("25/04/1985"),"Maria", "Rua B", 931058394);
 
         Utilizador u = new Utilizador(f2, new Password("12345678"));
         Utilizador u2 = new Utilizador(f1, new Password("1234abcd"));
