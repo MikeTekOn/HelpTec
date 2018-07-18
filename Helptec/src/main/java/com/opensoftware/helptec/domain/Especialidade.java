@@ -73,7 +73,7 @@ public class Especialidade implements Serializable {
 
     @Override
     public String toString() {
-        return "Especialidade{" + "especialidade=" + especialidade + '}';
+        return especialidade.nome();
     }
 
 }

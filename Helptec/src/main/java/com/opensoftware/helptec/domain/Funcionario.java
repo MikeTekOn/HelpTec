@@ -6,7 +6,6 @@
 package com.opensoftware.helptec.domain;
 
 import com.opensoftware.helptec.valueobjects.Data;
-import com.opensoftware.helptec.valueobjects.Nome;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Embedded;
@@ -53,12 +52,6 @@ public class Funcionario implements Serializable {
         this.name = name;
     }
 
-    public String name() {
-        return name;
-    }
-
-    
-
     /**
      *
      */
@@ -67,8 +60,18 @@ public class Funcionario implements Serializable {
     }
 
     /**
+     * get name of worker
      *
-     * @return
+     * @return Name of worker
+     */
+    public String name() {
+        return name;
+    }
+
+    /**
+     * Get Especialidade
+     *
+     * @return Especialidade
      */
     public Especialidade especialidade() {
         return especialidade;
