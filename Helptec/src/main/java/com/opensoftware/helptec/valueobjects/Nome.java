@@ -14,7 +14,7 @@ import javax.persistence.Embeddable;
  * @date 2/jul/2018
  */
 @Embeddable
-public class Nome implements Serializable{
+public class Nome implements Serializable {
 
     private String nome;
 
@@ -25,5 +25,16 @@ public class Nome implements Serializable{
     protected Nome() {
 
     }
+
+    public String nome() {
+        return nome;
+    }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+
+    
 
 }
