@@ -6,6 +6,7 @@
 package com.opensoftware.helptec.persistence;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,11 +23,16 @@ import javax.persistence.Query;
 public class PersistenceRepository<T, ID extends Serializable> {
 
     private final String nameUP = "pu";
-    private Class<T> entityClass;
+    private final Class<T> entityClass;
+
+    public PersistenceRepository() {
+        ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
+        this.entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
+    }
 
     public EntityManager entityManager() {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(nameUP);
 
         return emf.createEntityManager();
     }
@@ -39,16 +45,11 @@ public class PersistenceRepository<T, ID extends Serializable> {
      */
     public T save(T entity) {
 
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
-//        EntityManager e = emf.createEntityManager();
         EntityManager em = EntityManagerUtil.getEntityManager();
         if (entity == null) {
             throw new IllegalArgumentException("Data is empty");
         }
 
-//       e.getTransaction().begin();
-//       e.persist(entity);
-//       e.getTransaction().commit();
         em.getTransaction().begin();
         em.persist(entity);
         em.getTransaction().commit();
@@ -114,7 +115,7 @@ public class PersistenceRepository<T, ID extends Serializable> {
      */
     public List<T> findAll() {
 
-        Query query = entityManager().createNamedQuery("SELECT e FROM " + entityClass.getSimpleName() + " e");
+        Query query = entityManager().createQuery("SELECT e FROM " + entityClass.getSimpleName() + " e");
 
         return query.getResultList();
     }
